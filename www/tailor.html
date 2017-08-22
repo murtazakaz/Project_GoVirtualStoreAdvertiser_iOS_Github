@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="lib/jquery-mobile/css/jquery.mobile-1.4.0.min.css" />
+        <script type="text/javascript" src="lib/jquery-mobile/js/jquery-1.11.0.min.js"></script>
+        <script type="text/javascript" src="lib/jquery-mobile-router/js/jquery.mobile.router.min.js"></script>
+        <script type="text/javascript" src="lib/jquery-mobile/js/jquery.mobile-1.4.0.min.js"></script>
+        <link rel="stylesheet" type="text/css" href="css/index.css">
+		<link rel="stylesheet" type="text/css" href="css/bootstrap.css">
+		<link rel="stylesheet" type="text/css" href="css/jqm-icon-pack-fa.css">
+        <title>Go Virtual</title>
+        <script type="text/javascript" src="cordova.js"></script>
+		 <script type="text/javascript" src="js/menu.js"></script>
+        <script type="text/javascript" src="phonegap.js"></script>
+		<!-- <script>  -->
+		<!-- function getParameterByName(name, url) { -->
+		<!-- if (!url) url = window.location.href; -->
+		<!-- name = name.replace(/[\[\]]/g, "\\$&"); -->
+		<!-- var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"), -->
+			<!-- results = regex.exec(url); -->
+		<!-- if (!results) return null; -->
+		<!-- if (!results[2]) return ''; -->
+		<!-- return decodeURIComponent(results[2].replace(/\+/g, " ")); -->
+			<!-- } -->
+			
+			
+			
+			
+			<!-- </script> -->
+   
+    </head>
+    
+     <body onload="op();"  >
+         <div id="signup_page" data-role="page"  data-theme="b">
+		
+		<div id="header_home" data-position="fixed" data-tap-toggle="false" data-role="header">
+
+            <h1 style="font-family:'Microsoft NeoGothic';text-shadow: none;">POST AD</h1>
+            <a id="_home" href="#myPanel" onclick="sidemenu();" class="ui-btn-left" data-icon="bars" data-iconpos="notext">Menu</a>
+            <input type="hidden" id="edt_mail" />
+        </div>
+		  <div  data-role="panel" id="myPanel" data-display="push" data-position="left" data-theme="b">
+             <center>
+			 <!-- <a><img id="userPic" style=" border-radius: 50%;" /></a>  -->
+			 <a href="profile.html"><img id="userPic" src="img/profile.png" style="border-radius: 50%;height: 100px;width: 50%;"/></a>
+			<div id="emailid" style="color: white;" ></div></center> 
+			
+			<br/><br/>
+			
+			<!-- <div  id="sidemenu" style="font-family:'Microsoft NeoGothic';"> -->
+           <ul data-role="listview" data-inset="false" data-theme="b"> 
+				
+                   <li><a id="go_logout" onclick="viewadspage()" style="font-family:'Microsoft NeoGothic';">View Your Ads</a></li>
+				    <li><a id="go_logout" onclick="category()()" style="font-family:'Microsoft NeoGothic';">All Categories</a></li>
+				  <li><a id="go_logout" onclick="airlinepage()" style="font-family:'Microsoft NeoGothic';">Airlines</a></li> 
+				  <li><a id="go_logout" onclick="barpage()" style="font-family:'Microsoft NeoGothic';">Bars</a></li>
+				  <li><a id="go_logout" onclick="carspage()" style="font-family:'Microsoft NeoGothic';">Cars</a></li> 
+				  <li><a id="go_logout" onclick="casinopage()" style="font-family:'Microsoft NeoGothic';">Casinos</a></li> 
+				  <li><a id="go_logout" onclick="clothingpage()" style="font-family:'Microsoft NeoGothic';">Clothing</a></li> 
+				  <li><a id="go_logout" onclick="drycleanpage()" style="font-family:'Microsoft NeoGothic';">Dry Cleaning</a></li> 
+				  <li><a id="go_logout" onclick="hairsalonpage()" style="font-family:'Microsoft NeoGothic';">Hair Salon</a></li> 
+				  <li><a id="go_logout" onclick="hospitalpage()" style="font-family:'Microsoft NeoGothic';">Hospitals</a></li> 
+				  <li><a id="go_logout" onclick="hotelpage()" style="font-family:'Microsoft NeoGothic';">Hotels</a></li>
+				  <li><a id="go_logout" onclick="massagepage()" style="font-family:'Microsoft NeoGothic';">Massage</a></li> 
+				  <li><a id="go_logout" onclick="moviepage()" style="font-family:'Microsoft NeoGothic';">Movies</a></li> 
+				  <li><a id="go_logout" onclick="nightclubspage()" style="font-family:'Microsoft NeoGothic';">Night Clubs</a></li>
+				  <li><a id="go_logout" onclick="pharmacypage()" style="font-family:'Microsoft NeoGothic';">Pharmacies</a></li>	
+				  <li><a id="go_logout" onclick="restaurantpage()" style="font-family:'Microsoft NeoGothic';">Restaurants</a></li> 				  
+				  <li><a id="go_logout" onclick="supermarketpage()" style="font-family:'Microsoft NeoGothic';">Supermarkets</a></li>	
+				  <li><a id="go_logout" onclick="tailorpage()" style="font-family:'Microsoft NeoGothic';">Tailoring</a></li> 
+				  <li><a id="go_logout" onclick="logout()" style="font-family:'Microsoft NeoGothic';">Logout</a></li>
+            </ul> 
+
+
+         </div>
+          
+		  
+		  
+
+		<div data-role="content" >
+		<section id="content" class="container" >
+
+            
+
+               <center><h4 class="page-title"></h4></center>
+
+                
+
+                <div class="block-area">
+					<div class="col-md-12">	
+					<h2></h2>
+		
+				   <form id="frmLogin" style="color: white;">
+ 
+  
+ <div class="form-group">
+    <input type="text" class="form-control" id="p_name" placeholder="Ad Title">
+  </div>
+  <div class="form-group">
+    <input type="text" class="form-control" id="address" placeholder="Address">
+  </div>
+  <div class="form-group">
+    <input type="text" class="form-control" id="city" placeholder="City">
+  </div>
+   <div class="form-group">
+    <input type="text" class="form-control" id="country" placeholder="Country">
+  </div>
+  <div class="form-group">
+    <input type="text" class="form-control" id="price" placeholder="Price $USD">
+  </div>
+  <div class="form-group">
+   <textarea class="form-control m-b-10" id="description" placeholder="Description"></textarea>
+  </div>
+  <div class="form-group" >
+  
+    <select class="form-control m-b-10" id="action">
+       
+       <option>OPEN</option>
+       <option>CLOSE</option> 
+    </select>
+  </div>
+  
+  <!-- <div class="form-group"> -->
+    <!-- <input type="file" class="form-control" id="image2"> -->
+  <!-- </div> -->
+  <!-- <div class="form-group"> -->
+    <!-- <input type="file" class="form-control" id="image3"> -->
+  <!-- </div> -->
+  
+  
+ <a href="#" style="text-decoration:none;"><input type="submit" value="Next" style="width:100%; padding:10px; background:#333; font-size: 18px; font-weight: bold;" onclick="postAd();"/></a>
+</form>
+                </div>
+                </div>
+
+                
+
+            </section>
+         </div>
+		
+        </div>
+		 <script>
+        function postAd() {
+		var useradd_id =getParameterByName('user'); 
+		var category = "Tailor";
+		var price = $("#price").val();
+		var p_name =$("#p_name").val();
+		var action = $("#action").val();
+		var address = $("#address").val();
+		var city = $("#city").val();
+		var country = $("#country").val();
+		var description = $("#description").val();
+		
+		
+		
+		 var dataString = "&useradd_id=" + useradd_id + "&category=" + category + "&price=" + price + "&p_name=" + 
+		 p_name + "&action=" + action + "&address=" + address + "&city=" + city + "&country=" + country + "&description=" + description ;
+		if( $.trim(useradd_id).length > 0 && $.trim(category).length > 0 && $.trim(price).length > 0 && $.trim(p_name).length > 0 && $.trim(action).length > 0 && $.trim(address).length > 0 && $.trim(address).length > 0 && $.trim(city).length > 0 && $.trim(country).length > 0 && $.trim(description).length > 0)
+		{    
+			 <!-- window.location="uploadimage.html?"+dataString+"";		 -->
+              $.ajax({
+                      url: "http://govirtualstore.com/app/iOS/advertiserbooking.php",
+                    type: "POST",
+                    data: dataString,
+                    complete: function(data){
+						
+					window.location="uploadimage.html?user="+useradd_id+"&&p_name="+p_name+"&category="+category+"&price="+price+"";
+					}
+                });
+				
+				} 
+		else { 
+		alert("Please Fill in all fields");
+		}
+           
+        }
+
+    </script>
+		 
+    </body>
+</html>

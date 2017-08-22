@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="lib/jquery-mobile/css/jquery.mobile-1.4.0.min.css" />
+        <script type="text/javascript" src="lib/jquery-mobile/js/jquery-1.11.0.min.js"></script>
+        <script type="text/javascript" src="lib/jquery-mobile-router/js/jquery.mobile.router.min.js"></script>
+        <script type="text/javascript" src="lib/jquery-mobile/js/jquery.mobile-1.4.0.min.js"></script>
+        <link rel="stylesheet" type="text/css" href="css/index.css">
+		<link rel="stylesheet" type="text/css" href="css/bootstrap.css">
+		<link rel="stylesheet" type="text/css" href="css/jqm-icon-pack-fa.css">
+        <title>Go Virtual</title>
+        <script type="text/javascript" src="cordova.js"></script>
+        <script type="text/javascript" src="phonegap.js"></script>
+		<script> 
+		function getParameterByName(name, url) {
+		if (!url) url = window.location.href;
+		name = name.replace(/[\[\]]/g, "\\$&");
+		var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
+			results = regex.exec(url);
+		if (!results) return null;
+		if (!results[2]) return '';
+		return decodeURIComponent(results[2].replace(/\+/g, " "));
+			}</script>
+			
+    <script type="text/javascript" src="js/menu.js"></script>
+	<script>
+		$(function initialize() {
+			
+				<!-- //var url = window.location.pathname; -->
+				<!-- var is_input = document.URL.indexOf('?'); -->
+
+				<!-- // Check the position of the ? in the url -->
+				<!-- if (is_input != -1) -->
+				<!-- {  -->
+				<!-- // Create variable from ? in the url to the end of the string -->
+				<!-- addr_str = document.URL.substring(is_input+1, document.URL.length); -->
+                <!-- } -->
+				
+				var user_id =getParameterByName('user'); 
+				 var addr_str =getParameterByName('name');
+				 
+				 <!-- onSuccess = function(position) { -->
+				 <!-- clat = position.coords.latitude; -->
+				 <!-- clng = position.coords.longitude; -->
+				 <!-- currentposition =  position.coords.latitude+","+position.coords.longitude; -->
+								 
+							<!-- //	alert(lat +" "+ lon); -->
+				   <!-- /* alert('Latitude: '          + position.coords.latitude          + '\n' + -->
+						  <!-- 'Longitude: '         + position.coords.longitude         + '\n' + -->
+						  <!-- 'Altitude: '          + position.coords.altitude          + '\n' + -->
+						  <!-- 'Accuracy: '          + position.coords.accuracy          + '\n' + -->
+						  <!-- 'Altitude Accuracy: ' + position.coords.altitudeAccuracy  + '\n' + -->
+						  <!-- 'Heading: '           + position.coords.heading           + '\n' + -->
+						  <!-- 'Speed: '             + position.coords.speed             + '\n' + -->
+						  <!-- 'Timestamp: '         + position.timestamp                + '\n'); */ -->
+				<!-- }; -->
+
+				// onError Callback receives a PositionError object
+				//
+				<!-- function onError(error) { -->
+					<!-- alert('Someting might be wrong\n Please Check Internet Connection or \n GPS Location should be turn ON'); -->
+				<!-- } -->
+
+				<!-- navigator.geolocation.getCurrentPosition(onSuccess, onError); -->
+				
+            $.ajax({
+                type: "POST",
+                url: "http://govirtualstore.com/app/iOS/details.php?name="+addr_str+"",
+                cache: false,
+                crossDomain: true,
+                data: {name: addr_str},
+                success: function (data) {
+                    var str =data;
+					 
+					for (i in str)
+                    {
+					 <!-- var geocoder = new google.maps.Geocoder(); -->
+					<!-- var address = str[i].address+" "+str[i].city+" "+str[i].country; -->
+					<!-- //alert(address); -->
+					<!-- geocoder.geocode( { 'address': address}, function(results, status) { -->
+
+					<!-- if (status == google.maps.GeocoderStatus.OK) { -->
+						 <!-- dlat = results[0].geometry.location.lat(); -->
+						 <!-- dlng = results[0].geometry.location.lng(); -->
+						 <!-- destposition = dlat +","+dlng ; -->
+					<!-- var p1 = new google.maps.LatLng(clat, clng); -->
+					<!-- var p2 = new google.maps.LatLng(dlat, dlng); -->
+
+					<!-- //alert(calcDistance(p1, p2)); -->
+					<!-- miles=calcDistance(p1, p2); -->
+					
+				     <!-- tt= "<div data-role='content'><section id='content' class='container'><center><h4 class='page-title'></h4></center><div class='block-area'><div><div class='col-md-12 col-sm-12 col-xs-12'><div id='carousel-example-generic'class='carousel slide'data-ride='carousel'><img src='"+str[i].image1+"' id='img' style='width:100%'></div><br><div class='row'><div class='col-md-6'><h3 id='col' style='color:#fff'>"+str[i].name+"</h3></div><div class='col-md-6'><a href='edit.html?user="+user_id+"&name="+addr_str+"&price="+str[i].price+"&p_name="+str[i].name+"'><button id='btn' type='button' class='btn btn-primary'>Edit</button></a></div></div><h4 id='col' style='color:#fff'>Price : $ "+str[i].price+"/n</h4><hr><h4 id='col' style='color:#fff'>Distance: "+miles+" miles away</h4><hr><h4 id='col' style='color:#fff'>Description</h4><p id='col' style='color:#fff'>"+str[i].description+"</p><hr id='mar' style='margin-top:15px;margin-bottom:15px'><h3 id='col' style='color:#fff'>Get Direction</h3><iframe  src='https://www.google.com/maps/embed/v1/directions?origin="+currentposition+"&destination="+destposition+"&key=AIzaSyD_HxOvY1-iyAZJzc9oVnrO10zrQGZxe3w'  width='100%' height='250' frameborder='0' style='border:0' allowfullscreen></iframe><br><br><br><br></div></div></div></section></div> "; -->
+                   <!-- $("#wrapper").append(tt); -->
+				   $(document.getElementById('p_name').value=str[i].name); 
+				   $(document.getElementById('price').value=str[i].price); 
+				   $(document.getElementById('address').value=str[i].address); 
+				   $(document.getElementById('city').value=str[i].city); 
+				   $(document.getElementById('country').value=str[i].country); 
+					$(document.getElementById('description').value=str[i].description); 
+					$(document.getElementById('action').value=str[i].action); 
+					$(document.getElementById('image1').src=str[i].image1); 
+					
+					
+					
+}					
+					
+                    
+                }
+            });
+        });
+	</script>
+    </head>
+    
+     <body onload="op();"  >
+         <div id="signup_page" data-role="page"  data-theme="b">
+		
+		<div id="header_home" data-position="fixed" data-tap-toggle="false" data-role="header">
+
+            <h1 style="font-family:'Microsoft NeoGothic';text-shadow: none;">POST AD</h1>
+            <a id="_home" href="#myPanel" onclick="sidemenu();" class="ui-btn-left" data-icon="bars" data-iconpos="notext">Menu</a>
+            <input type="hidden" id="edt_mail" />
+        </div>
+		 <div  data-role="panel" id="myPanel" data-display="push" data-position="left" data-theme="b">
+             <center>
+			 <!-- <a><img id="userPic" style=" border-radius: 50%;" /></a>  -->
+			 <a href="profile.html"><img id="userPic" src="img/profile.png" style="border-radius: 50%;height: 100px;width: 50%;"/></a>
+			<div id="emailid" style="color: white;" ></div></center> 
+			
+			<br/><br/>
+			
+			<!-- <div  id="sidemenu" style="font-family:'Microsoft NeoGothic';"> -->
+           <ul data-role="listview" data-inset="false" data-theme="b"> 
+				
+                   <li><a id="go_logout" onclick="viewadspage()" style="font-family:'Microsoft NeoGothic';">View Your Ads</a></li>
+				    <li><a id="go_logout" onclick="category()()" style="font-family:'Microsoft NeoGothic';">All Categories</a></li>
+				  <li><a id="go_logout" onclick="airlinepage()" style="font-family:'Microsoft NeoGothic';">Airlines</a></li> 
+				  <li><a id="go_logout" onclick="barpage()" style="font-family:'Microsoft NeoGothic';">Bars</a></li>
+				  <li><a id="go_logout" onclick="carspage()" style="font-family:'Microsoft NeoGothic';">Cars</a></li> 
+				  <li><a id="go_logout" onclick="casinopage()" style="font-family:'Microsoft NeoGothic';">Casinos</a></li> 
+				  <li><a id="go_logout" onclick="clothingpage()" style="font-family:'Microsoft NeoGothic';">Clothing</a></li> 
+				  <li><a id="go_logout" onclick="drycleanpage()" style="font-family:'Microsoft NeoGothic';">Dry Cleaning</a></li> 
+				  <li><a id="go_logout" onclick="hairsalonpage()" style="font-family:'Microsoft NeoGothic';">Hair Salon</a></li> 
+				  <li><a id="go_logout" onclick="hospitalpage()" style="font-family:'Microsoft NeoGothic';">Hospitals</a></li> 
+				  <li><a id="go_logout" onclick="hotelpage()" style="font-family:'Microsoft NeoGothic';">Hotels</a></li>
+				  <li><a id="go_logout" onclick="massagepage()" style="font-family:'Microsoft NeoGothic';">Massage</a></li> 
+				  <li><a id="go_logout" onclick="moviepage()" style="font-family:'Microsoft NeoGothic';">Movies</a></li> 
+				  <li><a id="go_logout" onclick="nightclubspage()" style="font-family:'Microsoft NeoGothic';">Night Clubs</a></li>
+				  <li><a id="go_logout" onclick="pharmacypage()" style="font-family:'Microsoft NeoGothic';">Pharmacies</a></li>	
+				  <li><a id="go_logout" onclick="restaurantpage()" style="font-family:'Microsoft NeoGothic';">Restaurants</a></li> 				  
+				  <li><a id="go_logout" onclick="supermarketpage()" style="font-family:'Microsoft NeoGothic';">Supermarkets</a></li>	
+				  <li><a id="go_logout" onclick="tailorpage()" style="font-family:'Microsoft NeoGothic';">Tailoring</a></li> 
+				  <li><a id="go_logout" onclick="logout()" style="font-family:'Microsoft NeoGothic';">Logout</a></li>
+            </ul> 
+
+
+         </div>
+          
+		  
+
+		<div data-role="content" >
+		<section id="content" class="container" >
+
+            
+
+               <center><h4 class="page-title"></h4></center>
+
+                
+
+                <div class="block-area">
+					<div class="col-md-12">	
+					<h2></h2>
+		
+				   <form id="frmLogin" style="color: white;">
+<div class="form-group">
+    <center><img id="image1" style="height: 70px; width: 50%;">
+	</center>
+	 <center><a onclick="reuploadFromGallery()">Upload New Image</a></center>
+  </div>				   
+  <div class="form-group">
+    <input type="text" class="form-control" id="p_name" placeholder="Ad Title">
+  </div>
+  <div class="form-group">
+    <input type="text" class="form-control" id="address" placeholder="Address">
+  </div>
+  <div class="form-group">
+    <input type="text" class="form-control" id="city" placeholder="City">
+  </div>
+   <div class="form-group">
+    <input type="text" class="form-control" id="country" placeholder="Country">
+  </div>
+  <div class="form-group">
+    <input type="text" class="form-control" id="price" placeholder="Price $USD">
+  </div>
+  <div class="form-group">
+   <textarea class="form-control m-b-10" id="description" placeholder="Description"></textarea>
+  </div>
+  <div class="form-group" >
+  
+    <select class="form-control m-b-10" id="action">
+       
+       <option>OPEN</option>
+       <option>CLOSE</option> 
+    </select>
+  </div>
+   <!-- <div class="form-group"> -->
+    <!-- <input type="file" class="form-control" id="image1"> -->
+  <!-- </div> -->
+ 
+  
+  
+ <a href="#" style="text-decoration:none;"><input type="submit" value="Post Ad" style="width:100%; padding:10px; background:#333; font-size: 18px; font-weight: bold;" onclick="postAd();"/></a>
+</form>
+                </div>
+                </div>
+
+                
+
+            </section>
+         </div>
+		
+        </div>
+		 <script>
+        function postAd() {
+		
+		//var useradd_id =getParameterByName('user'); 
+		var p_id =getParameterByName('name'); 
+		var price = $("#price").val();
+		var p_name =$("#p_name").val();
+		var action = $("#action").val();
+		var address = $("#address").val();
+		var city = $("#city").val();
+		var country = $("#country").val();
+		var description = $("#description").val();
+		<!-- var image1 = $("#image1").val(); -->
+		
+		
+		
+		 var dataString = "&p_id=" + p_id + "&price=" + price + "&p_name=" + 
+		 p_name + "&action=" + action + "&address=" + address + "&city=" + city + "&country=" + country + "&description=" + description ;
+		if( $.trim(p_id).length > 0 && $.trim(price).length > 0 && $.trim(p_name).length > 0 && $.trim(action).length > 0 && $.trim(address).length > 0  && $.trim(city).length > 0 && $.trim(country).length > 0 && $.trim(description).length > 0 )
+		{
+              $.ajax({
+                    type: "POST",
+                    url: "http://govirtualstore.com/app/iOS/update.php",
+                    data: dataString,
+                    crossDomain: true,
+                    cache: false,
+                    dataType: "json",
+                    complete: function (data) {
+						
+						   viewadspage();
+							
+                       
+                    }
+					
+                });
+				
+				} 
+		else { 
+		alert("Please Fill in all fields");
+		}
+           
+        }
+
+    </script>
+		 
+    </body>
+</html>
