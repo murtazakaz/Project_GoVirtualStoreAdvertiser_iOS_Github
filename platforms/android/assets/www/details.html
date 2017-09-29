@@ -174,6 +174,7 @@
                 success: function(data) {
                     var str = data;
                     var tt;
+					console.log(str);
                     <!-- SpinnerPlugin.activityStop(); 	 -->
                     for (i in str) {
                         <!-- var geocoder = new google.maps.Geocoder(); -->
@@ -192,7 +193,12 @@
                         <!-- miles=calcDistance(p1, p2); -->
 
                         tt = "<div data-role='content'><section id='content' class='container'><center><h4 class='page-title'></h4></center><div class='block-area'><div><div class='col-md-12 col-sm-12 col-xs-12'><div id='carousel-example-generic'class='carousel slide'data-ride='carousel'><img src='" + str[i].image1 + "' id='img' style='width:100%'></div><br><div class='row'><div class='col-md-6'><h3 id='col' style='color:#fff'>" + str[i].name + "</h3></div></div><h4 id='col' style='color:#fff'>Price : $ " + str[i].price + "/n</h4><hr><h4 id='col' style='color:#fff'>Description</h4><p id='col' style='color:#fff'>" + str[i].description + "</p><hr><h4 id='col' style='color:#fff'>Category : " + str[i].category + "</h4><hr><br><div class='col-md-6'><a onclick='editpage(" + str[i].id + ")'><button id='btn' type='button' class='btn btn-primary'>Edit</button></a><br><br><a onclick='deletepage()'><button id='btn' type='button' class='btn btn-primary'>Delete</button></a></div><br></div></div></div></section></div> ";
-                        $("#wrapper").append(tt);
+						
+						 tt1 = "<div style='margin: 5%;background: #ffffff;'><img src='" + str[i].image1 + "' style='width:100%;height: 200px;box-shadow: 1px 1px 1px 1px #000;'><div style='color: #333;margin:5%;'><center><h3>" + str[i].name + "</h3></center><hr><div class='row'><div class='col-md-12 col-sm-12 col-xs-12 col-lg-12'><div class='col-md-2 col-sm-3 col-xs-2 col-lg-2'>Price</div><div class='col-md-1 col-sm-1 col-xs-1 col-lg-1'></div><div class='col-md-9 col-sm-9 col-xs-9 col-lg-9'>$ " + str[i].price + "</div></div><div class='col-md-12 col-sm-12 col-xs-12 col-lg-12'><hr><div class='col-md-2 col-sm-2 col-xs-2 col-lg-2'>Now</div><div class='col-md-1 col-sm-1 col-xs-1 col-lg-1'></div><div class='col-md-9 col-sm-9 col-xs-9 col-lg-9'>" + str[i].action + "</div></div><div class='col-md-12 col-sm-12 col-xs-12 col-lg-12'><hr><div class='col-md-2 col-sm-2 col-xs-2 col-lg-2'><img src='img/location.png' /></div><div class='col-md-1 col-sm-1 col-xs-1 col-lg-1'></div><div class='col-md-9 col-sm-9 col-xs-9 col-lg-9'>" + str[i].address + ", " + str[i].city + ", " + str[i].country + "</div></div><div class='col-md-12 col-sm-12 col-xs-12 col-lg-12'><hr><div class='col-md-2 col-sm-2 col-xs-2 col-lg-2'><img src='img/info.png' /></div><div class='col-md-1 col-sm-1 col-xs-1 col-lg-1'></div><div class='col-md-9 col-sm-9 col-xs-9 col-lg-9'>" + str[i].description + "</div></div></div></div><br></div></div><br>";
+						
+						btn = "<div class='col-md-12 col-sm-12 col-xs-12 col-lg-12'><div class='col-md-5 col-sm-5 col-xs-5 col-lg-5'><a onclick='editpage(" + str[i].id + ")'><button id='btn' type='button' class='btn btn-primary'>Edit</button></a></div><div class='col-md-2 col-sm-2 col-xs-2 col-lg-2'></div><div class='col-md-5 col-sm-5 col-xs-5 col-lg-5'><a onclick='deletepage()'><button id='btn' type='button' class='btn btn-primary'>Delete</button></a></div></div>"
+                        $("#wrapper").append(tt1);
+						 $("#bookbtn").append(btn);
 
                         <!-- }  -->
                         <!-- }); -->
@@ -205,8 +211,7 @@
     <script type="text/javascript" src="js/menu.js"></script>
 </head>
 
-<body onload="op();" style="background-image:url('img/2.png');background-size:cover; background-repeat: no-repeat;
-    background-attachment: fixed;">
+<body onload="op();" style="background:whitesmoke;">
     <div id="signup_page" data-role="page" style="text-shadow: none;">
         <div id="wrapper" data-role="content" style="text-shadow: none;">
             <div class="col-md-4">
@@ -306,7 +311,11 @@
 
             </section>
          </div> -->
-
+ <div style=" background: white;" data-position="fixed" data-tap-toggle="false" data-role="footer">
+       
+                <div style="    padding: 1%;"  id="bookbtn"></div>
+           
+        </div>
 
     </div>
 </body>

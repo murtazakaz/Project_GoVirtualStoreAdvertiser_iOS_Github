@@ -124,15 +124,15 @@
             var fname = $("#fname").val();
             var email = $("#sign_email").val();
             var password = $("#sign_pass").val();
-            var image = $("#image1").val();
-            var address = $("#address").val();
-            var city = $("#city").val();
-            var country = $("#country").val();
-            var contact = $("#contact").val();
+            <!-- var image = $("#image1").val(); -->
+            <!-- var address = $("#address").val(); -->
+            <!-- var city = $("#city").val(); -->
+            <!-- var country = $("#country").val(); -->
+            <!-- var contact = $("#contact").val(); -->
 
-            var dataString = "fname=" + fname + "&email=" + email + "&password=" + password + "&image=" + image + "&address=" + address + "&city=" + city + "&country=" + country + "&contact=" + contact;
+            var dataString = "fname=" + fname + "&email=" + email + "&password=" + password + "&image=" + image + "&contact=" + contact;
             //alert(dataString);
-            if ($.trim(fname).length > 0 && $.trim(email).length > 0 && $.trim(password).length > 0 && $.trim(address).length > 0 && $.trim(city).length > 0 && $.trim(country).length > 0 && $.trim(contact).length > 0) {
+            if ($.trim(fname).length > 0 && $.trim(email).length > 0 && $.trim(password).length > 0  && $.trim(contact).length > 0) {
 
                 var options = {
                     dimBackground: true
